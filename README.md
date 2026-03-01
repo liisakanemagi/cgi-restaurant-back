@@ -12,6 +12,12 @@
 * **Tegevused:** Tegevuskava loomine, Projekti algatamine, PostgreSQL seadistamine, Swaggeri integreerimine, Giti hoidla loomine.
 * **Ajakulu:** ~ 45 minutit
 
+### Päev 2
+* **Tegevused:** Restorani plaani ja filtrite läbimõtlemine, DB tabelite täitmine andmetega, entity klasside loomine.
+*  **Ajakulu:** ~ 3 tundi
+
 ### AI kasutamine
 
-* **Projekti arhidektuuri planeerimine** *
+* **Abi projekti arhidektuuri planeerimises** *
+* **Restorani saaliplaani koordinaatide loogika osas konsulteerimine.** *
+* **Entity klasside sisu valideerimine ja ülevaatus** *
