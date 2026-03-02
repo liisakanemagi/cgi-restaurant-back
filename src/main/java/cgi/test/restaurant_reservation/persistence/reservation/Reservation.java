@@ -1,18 +1,18 @@
-package cgi.test.restaurant_reservation.persistence;
+package cgi.test.restaurant_reservation.persistence.reservation;
 
+import cgi.test.restaurant_reservation.persistence.restauranttable.RestaurantTable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "reservation")
+@jakarta.persistence.Table(name = "reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

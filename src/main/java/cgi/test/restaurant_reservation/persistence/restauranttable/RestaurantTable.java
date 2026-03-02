@@ -1,4 +1,4 @@
-package cgi.test.restaurant_reservation.persistence;
+package cgi.test.restaurant_reservation.persistence.restauranttable;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @Setter
 @Entity
-@Table(name = "restaurant_table")
+@jakarta.persistence.Table(name = "restaurant_table")
 public class RestaurantTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,13 +34,16 @@ public class RestaurantTable {
     @Column(name = "coordinate_y", nullable = false)
     private Double coordinateY;
 
+
     @ColumnDefault("false")
     @Column(name = "is_window_seat")
     private Boolean isWindowSeat = false;
 
+
     @ColumnDefault("false")
     @Column(name = "is_accessible")
     private Boolean isAccessible = false;
+
 
     @ColumnDefault("false")
     @Column(name = "is_private")

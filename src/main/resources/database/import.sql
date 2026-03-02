@@ -1,6 +1,4 @@
-INSERT INTO restaurant_table (table_number, capacity, coordinate_x, coordinate_y, is_window_seat, is_private,
-                              is_accessible)
-
+INSERT INTO restaurant_table (table_number, capacity, coordinate_x, coordinate_y, is_window_seat, is_accessible, is_private)
 VALUES ('T1', 6, 15.0, 25.0, true, true, true),
        ('T2', 2, 85.0, 15.0, true, true, true),
        ('T3', 8, 40.0, 45.0, false, false, true),

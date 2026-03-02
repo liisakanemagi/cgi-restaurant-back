@@ -1,0 +1,17 @@
+package cgi.test.restaurant_reservation.persistence.restauranttable;
+
+import cgi.test.restaurant_reservation.controller.restauranttable.RestaurantTableDto;
+import org.mapstruct.*;
+import org.mapstruct.Mapper;
+
+import java.util.List;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+public interface RestaurantTableMapper {
+    RestaurantTable toEntity(RestaurantTableDto restaurantTableDto);
+
+    List<RestaurantTableDto> toRestaurantTableDtos(List<RestaurantTable> restaurantTables);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    RestaurantTable partialUpdate(RestaurantTableDto restaurantTableDto, @MappingTarget RestaurantTable restaurantTable);
+}

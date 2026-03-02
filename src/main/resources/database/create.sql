@@ -1,4 +1,4 @@
-CREATE TABLE restaurant_table
+CREATE TABLE IF NOT EXISTS restaurant_table
 (
     id             SERIAL PRIMARY KEY,
     table_number   VARCHAR(10)      NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE restaurant_table
     is_private     BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE reservation
+CREATE TABLE IF NOT EXISTS reservation
 (
     id            SERIAL PRIMARY KEY,
     table_id      INT          NOT NULL,
