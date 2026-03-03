@@ -23,8 +23,14 @@
 ### Päev 3
 
 * **Tegevused:** getTables funktsionaalsuse loomine, silmitsi seismine probleemiga, kus rakendus oli ühendatud vale
-* andmebaasi instanstiga (oli väga õpetlik probleemilahendamine)
+andmebaasi instanstiga (oli väga õpetlik probleemilahendamine)
 * **Ajakulu:** ~ 2 tundi
+
+### Päev 4
+
+* **Tegevused:** updateRestaurantTable funktsionaalsuse loomine, et admin saaks tulevikus muuta laua asukohti või muid andmeid,
+generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Random" funktsionaalsust.
+* **Ajakulu:** ~ 3 tundi
 
 ### AI kasutamine
 
@@ -32,3 +38,4 @@
 * **Restorani saaliplaani koordinaatide loogika osas konsulteerimine.** *
 * **Entity klasside sisu valideerimine ja ülevaatus** *
 * **Tugi andmebaasiühenduse silumisel ja konfiguratsiooni kontrollimisel** *
+* **Konsultatsioon andmete genereerimise (MockDataService) loogika ja ajahalduse osas** *
