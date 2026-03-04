@@ -26,6 +26,7 @@ public class MockDataService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void generateMockReservations() {
+
         if (reservationRepository.count() > 0) {
             return;
         }

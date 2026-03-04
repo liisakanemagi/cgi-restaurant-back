@@ -23,7 +23,7 @@ public class RestaurantTableController {
         return restaurantTableService.getRestaurantTables();
     }
 
-    @PutMapping("/restaurant/table/{tableId}")
+    @PutMapping("api/restaurant/table/{tableId}")
 
     public RestaurantTable updateRestaurantTable(@PathVariable Integer tableId, @RequestBody RestaurantTableDto restaurantTableDto) {
         return restaurantTableService.updateRestaurantTable(tableId, restaurantTableDto);
