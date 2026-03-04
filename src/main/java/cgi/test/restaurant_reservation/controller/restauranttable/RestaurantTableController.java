@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RestaurantTableController {
 
-
     private final RestaurantTableService restaurantTableService;
 
     @GetMapping("/api/restaurant/tables")
