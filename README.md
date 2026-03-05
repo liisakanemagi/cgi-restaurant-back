@@ -41,6 +41,12 @@ generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Ra
 õppisin "Stream" funktsionaalsust)
 * **Ajakulu:** ~ 2 tundi
 
+### Päev 6
+
+* **Tegevused:** getAviailableRestaurantTables muutus getSuitableRestaurantTables - broneerija eelistuste filtrite lisamine
+ja sobivate laudade sorteerimine vastavalt külaliste arvule.
+* **Ajakulu:** ~ 1,5 tundi
+
 ### AI kasutamine
 
 * **Abi projekti arhidektuuri planeerimises** *
@@ -50,3 +56,4 @@ generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Ra
 * **Konsultatsioon andmete genereerimise (MockDataService) loogika ja ajahalduse osas** *
 * **Java Stream API funktsionaalsuse õppimine** *
 * **SearchService' filtreerimisalgoritmi valideerimine (ai aitas minu loogika üle vaadata)** *
+* **AI aitas meelde tuletada sort() ja Integer.compare kirjutamise loogikat** *
