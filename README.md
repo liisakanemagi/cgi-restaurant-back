@@ -31,7 +31,7 @@
 ### Päev 4
 
 * **Tegevused:** updateRestaurantTable funktsionaalsuse loomine, et admin saaks tulevikus muuta laua asukohti või muid andmeid,
-generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Random" funktsionaalsust.
+*generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Random" funktsionaalsust.
 * **Ajakulu:** ~ 3 tundi
 
 ### Päev 5
@@ -49,11 +49,11 @@ ja sobivate laudade sorteerimine vastavalt külaliste arvule.
 
 ### AI kasutamine
 
-* **Abi projekti arhidektuuri planeerimises** *
-* **Restorani saaliplaani koordinaatide loogika osas konsulteerimine.** *
-* **Entity klasside sisu valideerimine ja ülevaatus** *
-* **Tugi andmebaasiühenduse silumisel ja konfiguratsiooni kontrollimisel** *
-* **Konsultatsioon andmete genereerimise (MockDataService) loogika ja ajahalduse osas** *
-* **Java Stream API funktsionaalsuse õppimine** *
-* **SearchService' filtreerimisalgoritmi valideerimine (ai aitas minu loogika üle vaadata)** *
-* **AI aitas meelde tuletada sort() ja Integer.compare kirjutamise loogikat** *
+* **Abi projekti arhidektuuri planeerimises** 
+* **Restorani saaliplaani koordinaatide loogika osas konsulteerimine.** 
+* **Entity klasside sisu valideerimine ja ülevaatus** 
+* **Tugi andmebaasiühenduse silumisel ja konfiguratsiooni kontrollimisel** 
+* **Konsultatsioon andmete genereerimise (MockDataService) loogika ja ajahalduse osas** 
+* **Java Stream API funktsionaalsuse õppimine** 
+* **SearchService' filtreerimisalgoritmi valideerimine (ai aitas minu loogika üle vaadata)** 
+* **AI aitas meelde tuletada sort() ja Integer.compare kirjutamise loogikat** 
