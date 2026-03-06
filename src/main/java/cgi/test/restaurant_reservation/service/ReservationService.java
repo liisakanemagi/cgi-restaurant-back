@@ -34,6 +34,7 @@ public class ReservationService {
         LocalDateTime endTime = reservationInfo.getStartTime().plusHours(2);
 
         validateTableAvailability(reservationInfo, restaurantTable, endTime);
+        validateTableCapacity(reservationInfo, restaurantTable);
 
         Reservation reservation = reservationMapper.toReservation(reservationInfo);
             reservation.setRestaurantTable(restaurantTable);
@@ -49,5 +50,12 @@ public class ReservationService {
             throw new ForbiddenException(ErrorCode.RESTAURANT_TABLE_ALREADY_BOOKED);
         }
     }
+
+    private static void validateTableCapacity(ReservationInfo reservationInfo, RestaurantTable restaurantTable) {
+        if(restaurantTable.getCapacity() < reservationInfo.getGuestCount()){
+            throw new ForbiddenException(ErrorCode.RESTAURANT_TABLE_TOO_SMALL);
+        }
+    }
+
 }
 

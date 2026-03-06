@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum ErrorCode {
 
     RESTAURANT_TABLE_NOT_FOUND("Lauda ei leitud", 111),
-    RESTAURANT_TABLE_ALREADY_BOOKED("Laud on juba sellel kellaajal broneeritud", 112);
+    RESTAURANT_TABLE_ALREADY_BOOKED("Laud on juba sellel kellaajal broneeritud", 112),
+    RESTAURANT_TABLE_TOO_SMALL("Laud on liiga väike", 113);
 
     private final String message;
     private final int errorCode;
