@@ -20,7 +20,7 @@ public class RestaurantTableService {
 
     public RestaurantTable getValidRestaurantTable(Integer tableId){
         return restaurantTableRepository.findById(tableId)
-                .orElseThrow(() -> new DataNotFoundException(ErrorCode.TABLE_NOT_FOUND));
+                .orElseThrow(() -> new DataNotFoundException(ErrorCode.RESTAURANT_TABLE_NOT_FOUND));
     }
 
     public RestaurantTable updateRestaurantTable(Integer tableId, RestaurantTableDto restaurantTableDto){
