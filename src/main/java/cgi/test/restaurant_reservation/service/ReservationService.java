@@ -1,5 +1,8 @@
 package cgi.test.restaurant_reservation.service;
 
+import cgi.test.restaurant_reservation.Infrastructure.DataNotFoundException;
+import cgi.test.restaurant_reservation.Infrastructure.ErrorCode;
+import cgi.test.restaurant_reservation.Infrastructure.ForbiddenException;
 import cgi.test.restaurant_reservation.controller.reservation.ReservationDto;
 import cgi.test.restaurant_reservation.controller.reservation.ReservationInfo;
 import cgi.test.restaurant_reservation.persistence.reservation.Reservation;
@@ -9,6 +12,7 @@ import cgi.test.restaurant_reservation.persistence.restauranttable.RestaurantTab
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,12 +31,17 @@ public class ReservationService {
     public ReservationDto postReservation(ReservationInfo reservationInfo) {
 
         RestaurantTable restaurantTable = restaurantTableService.getValidRestaurantTable(reservationInfo.getRestaurantTableId());
-        Reservation reservation = reservationMapper.toReservation(reservationInfo);
 
-        reservation.setRestaurantTable(restaurantTable);
-        Reservation savedReservation = reservationRepository.save(reservation);
-        return reservationMapper.toReservationDto(savedReservation);
-    }
-
+        LocalDateTime endTime = reservationInfo.getStartTime().plusHours(2);
+        boolean bookingAlreadyExists = reservationRepository.existsByRestaurantTableAndStartTimeBeforeAndEndTimeAfter
+                (restaurantTable, endTime, reservationInfo.getStartTime());
+        if (bookingAlreadyExists){
+            throw new ForbiddenException(ErrorCode.RESTAURANT_TABLE_ALREADY_BOOKED);
+        }
+            Reservation reservation = reservationMapper.toReservation(reservationInfo);
+            reservation.setRestaurantTable(restaurantTable);
+            Reservation savedReservation = reservationRepository.save(reservation);
+            return reservationMapper.toReservationDto(savedReservation);
+        }
 }
 
