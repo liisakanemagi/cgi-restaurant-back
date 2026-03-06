@@ -24,10 +24,8 @@ public class RestaurantTableService {
     }
 
     public RestaurantTable updateRestaurantTable(Integer tableId, RestaurantTableDto restaurantTableDto){
-
         RestaurantTable restaurantTable = getValidRestaurantTable(tableId);
         restaurantTableMapper.updateRestaurantTable(restaurantTableDto, restaurantTable);
-
         restaurantTableRepository.save(restaurantTable);
         return restaurantTable;
     }
