@@ -1,5 +1,6 @@
 package cgi.test.restaurant_reservation.service;
 
+import cgi.test.restaurant_reservation.Infrastructure.DataNotFoundException;
 import cgi.test.restaurant_reservation.Infrastructure.ErrorCode;
 import cgi.test.restaurant_reservation.Infrastructure.ForbiddenException;
 import cgi.test.restaurant_reservation.controller.reservation.ReservationDto;
@@ -22,6 +23,11 @@ public class ReservationService {
     private final ReservationMapper reservationMapper;
     private final RestaurantTableService restaurantTableService;
 
+    public Reservation getValidReservation(Integer reservationId){
+        return reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new DataNotFoundException(ErrorCode.RESERVATION_NOT_FOUND));
+    }
+
     public List<ReservationDto> getReservations() {
         List<Reservation> reservations = reservationRepository.findAll();
         return reservationMapper.toReservationDtos(reservations);
@@ -41,6 +47,10 @@ public class ReservationService {
             reservation.setEndTime(endTime);
             Reservation savedReservation = reservationRepository.save(reservation);
             return reservationMapper.toReservationDto(savedReservation);
+        }
+
+        public void deleteReservation(Integer tableId){
+
         }
 
     private void validateTableAvailability(ReservationInfo reservationInfo, RestaurantTable restaurantTable, LocalDateTime endTime) {
