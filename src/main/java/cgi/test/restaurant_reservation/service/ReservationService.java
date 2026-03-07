@@ -49,8 +49,9 @@ public class ReservationService {
             return reservationMapper.toReservationDto(savedReservation);
         }
 
-        public void deleteReservation(Integer tableId){
-
+        public void deleteReservation(Integer reservationId){
+            Reservation reservation = getValidReservation(reservationId);
+            reservationRepository.delete(reservation);
         }
 
     private void validateTableAvailability(ReservationInfo reservationInfo, RestaurantTable restaurantTable, LocalDateTime endTime) {

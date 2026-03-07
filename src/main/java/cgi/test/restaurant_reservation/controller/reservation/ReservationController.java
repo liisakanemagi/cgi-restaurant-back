@@ -3,10 +3,7 @@ package cgi.test.restaurant_reservation.controller.reservation;
 import cgi.test.restaurant_reservation.service.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,15 +16,22 @@ public class ReservationController {
     @GetMapping("/api/reservations")
     @Operation(summary = "Reserveeringute pärimine", description = "Tagastab nimekirja reserveeringutest")
 
-    public List<ReservationDto> getReservations(){
+    public List<ReservationDto> getReservations() {
         return reservationService.getReservations();
     }
 
-   @PostMapping("/api/reservation")
-   @Operation(summary = "Reserveeringu tegemine")
+    @PostMapping("/api/reservation")
+    @Operation(summary = "Reserveeringu tegemine", description = "Tagastab reserveeringu DTO objekti")
 
     public ReservationDto postReservation(@RequestBody ReservationInfo reservationInfo) {
-       return reservationService.postReservation(reservationInfo);
-   }
+        return reservationService.postReservation(reservationInfo);
+    }
+
+    @DeleteMapping("/api/reservation/{tableId}")
+    @Operation(summary = "Reserveeringu kustutamine")
+
+    public void deleteReservation(@RequestParam Integer reservationId) {
+        reservationService.deleteReservation(reservationId);
+    }
 
 }
