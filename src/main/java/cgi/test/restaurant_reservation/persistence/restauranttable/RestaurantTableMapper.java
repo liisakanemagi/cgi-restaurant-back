@@ -12,6 +12,8 @@ public interface RestaurantTableMapper {
 
     List<RestaurantTableDto> toRestaurantTableDtos(List<RestaurantTable> restaurantTables);
 
+    RestaurantTableDto toRestaurantTableDto (RestaurantTable restaurantTable);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateRestaurantTable(RestaurantTableDto restaurantTableDto, @MappingTarget RestaurantTable restaurantTable);
 }

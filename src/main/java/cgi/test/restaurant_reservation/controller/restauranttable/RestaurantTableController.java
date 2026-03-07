@@ -25,7 +25,7 @@ public class RestaurantTableController {
     @PutMapping("api/restaurant/table/{tableId}")
     @Operation(summary = "Laua andmete muutmine")
 
-    public RestaurantTable updateRestaurantTable(@PathVariable Integer tableId, @RequestBody RestaurantTableDto restaurantTableDto) {
+    public RestaurantTableDto updateRestaurantTable(@PathVariable Integer tableId, @RequestBody RestaurantTableDto restaurantTableDto) {
         return restaurantTableService.updateRestaurantTable(tableId, restaurantTableDto);
 
 

@@ -23,11 +23,12 @@ public class RestaurantTableService {
                 .orElseThrow(() -> new DataNotFoundException(ErrorCode.RESTAURANT_TABLE_NOT_FOUND));
     }
 
-    public RestaurantTable updateRestaurantTable(Integer tableId, RestaurantTableDto restaurantTableDto){
+    public RestaurantTableDto updateRestaurantTable(Integer tableId, RestaurantTableDto restaurantTableDto){
         RestaurantTable restaurantTable = getValidRestaurantTable(tableId);
         restaurantTableMapper.updateRestaurantTable(restaurantTableDto, restaurantTable);
         restaurantTableRepository.save(restaurantTable);
-        return restaurantTable;
+        return restaurantTableMapper.toRestaurantTableDto(restaurantTable);
+
     }
 
 
