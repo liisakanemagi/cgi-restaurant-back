@@ -30,13 +30,9 @@ public class MockDataService {
         if (reservationRepository.count() > 0) {
             return;
         }
-
         List<RestaurantTable> restaurantTables = restaurantTableRepository.findAll();
-        
         for (int day = 0; day < 14; day++) {
-
             DailyReservations result = getGenerateReservationsForThisDay(day);
-
             for(int i = 0; i < result.reservationsThisDay(); i++)
                 createSingleMockReservation(restaurantTables, result.date(), day, i);
         }
@@ -47,7 +43,6 @@ public class MockDataService {
         int reservationsThisDay = 4 + random.nextInt(4);
         return new DailyReservations(date, reservationsThisDay);
     }
-
 
     private record DailyReservations(LocalDateTime date, int reservationsThisDay) {
     }

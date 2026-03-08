@@ -7,6 +7,45 @@
 * **Dokumentatsioon:** Swagger (OpenAPI)
 * **Frontend:** Vue.js (lisandub hiljem)
 
+## Käivitamine
+
+* **Andmebaasi ettevalmistus:** Veendu, et sul on töös PostgreSQL server. Loo uus tühi andmebaas (nt nimega restaurant_db).
+* **Konfigureerimine:** Seadista failis src/main/resources/application.properties järgmised andmed:
+* spring.datasource.url=jdbc:postgresql://localhost:5432/restaurant_db
+* spring.datasource.username=SINU_KASUTAJA
+* spring.datasource.password=SINU_PAROOL
+* **Käivitamine:** Liigu projekti juurkausta ja käivita rakendus:
+* ./gradlew bootRun
+* **Andmete genereerimine:** Andmete genereerimine: Esimesel käivitamisel loob rakendus automaatselt tabelid ja genereerib 
+* 14 päeva testandmed
+** *Dokumentatsioon:** API-ga tutvumiseks ja päringute testimiseks ava brauseris Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+## Ärireeglid
+
+* **Broneeringu kestus:** Süsteem eeldab, et iga broneering kestab fikseeritult 2 tundi.
+* **Broneeringute kellaajad:** Mock-andmed genereeritakse vahemikus 12:00–21:00 pooletunniste sammudega (nt 12:30, 14:00),
+* 14 päevaks.
+* **Laua mahutavus:** Broneeringut ei lubata luua, kui inimeste arv on suurem kui laua maksimaalne kohtade arv. Lauadade
+* nimekiri sorteeritakse vastavalt külaliste arvule, et jagada külalised laudadesse võimalikult õkonoomlselt. 
+* **Laudade filtreerimise võimalused:** Klient saab valida, kas ta soovib broneerida ratastooliga ligipääsetavat lauda,
+* lauda akna all või lauda privaatses vaheseinaga alas. 
+* * **Saadavuse kontroll:** Süsteem kontrollib, et samal kellaajal ei oleks laud juba teise broneeringuga hõivatud (arvestades 2h akent).
+* **Lisakontroll:** Süsteem ei luba luua broneeringuid, kui kliendiandmed ei ole sisestatud.
+
+## Tulevikuvalmidus
+
+*Kuigi esmane vaade on suunatud kliendile, on backend ehitatud laiendatavust silmas pidades:
+
+* **Admin-liidese valmidus: updateRestaurantTable funktsionaalsus, mis toetab laudade asukohtade (koordinaatide) ja 
+* andmete muutmist.
+* **Haldusfunktsioonid: API toetab broneeringute kustutamist ja kõigi broneeringute vaatamist, mis on vajalik restorani personalile.
+
+## Arhidektuur
+
+* **Controller-Service-Repository muster**
+* **DTO-d ja Mapperid** Entity-objekte ei eksponeerita otse välja. Kasutatakse MapStruct-stiilis mappareid, et teisendada 
+* andmed DTO-deks, mis liiguvad kliendi ja serveri vahel.
+
 ## Päevik ja ajakulu
 
 ### Päev 1
@@ -59,13 +98,23 @@ ja sobivate laudade sorteerimine vastavalt külaliste arvule.
 ### Päev 8
 
 * **Tegevused:** postReservation funktsionaalsuse ja valideerimisahela loomine - lisasin kontrollid (saadavus, mahutavus),
-  *et tagada back-endi töökindlus ja välistada vigased broneeringud.
+*et tagada back-endi töökindlus ja välistada vigased broneeringud.
 * **Ajakulu:** ~ 1,5 tundi
 
+### Päev 9
+
+* **Tegevused:** MockdataService funktsionaalsuse täiustamine, et ta genereeriks broneeringuid 14 päeva peale (mitte 1 päev)
+* README täiendamine ja viimistlus
+* **Ajakulu:** ~ 2 tundi
+
+* **Ajakulu kokku ~ 17h 15min** *
+* Praktika alguseks suvel olen kindlasti tänu igapäevasele praktiseerimisele kiirem ja efektiivsem - selle proovitöö 
+* puhul pidasin oluliseks pigem kvaliteeti ja koodi sisulist mõistmist ja õppimist kui kiirust.
 
 ### AI kasutamine
-* **Kasutasin tema abi eelkõige uute funktsionaalsuste (nt Spring Data JPA päringud, Stream-API) sügavamaks mõistmiseks 
-* ja koodi töökindluse kontrollimiseks. Kogu rakenduse arhitektuurne loogika ja ärireeglite defineerimine on minu kontrolli all.**
+* AI poolt pakutud lahendused on minu poolt üle kontrollitud, rida-realt läbi kirjutatud ja kohandatud vastavalt projekti spetsiifikale.
+* Kasutasin AI abi eelkõige uute funktsionaalsuste (nt Spring Data JPA päringud, Stream-API) sügavamaks mõistmiseks 
+* ja koodi töökindluse kontrollimiseks. Kogu rakenduse arhitektuurne loogika ja ärireeglite defineerimine on minu kontrolli all.
 
 * **Abi projekti arhidektuuri planeerimises** 
 * **Restorani saaliplaani koordinaatide loogika osas konsulteerimine.** 
@@ -73,7 +122,7 @@ ja sobivate laudade sorteerimine vastavalt külaliste arvule.
 * **Tugi andmebaasiühenduse silumisel ja konfiguratsiooni kontrollimisel** 
 * **Konsultatsioon andmete genereerimise (MockDataService) loogika ja ajahalduse osas** 
 * **Java Stream API funktsionaalsuse õppimine** 
-* **SearchService' filtreerimisalgoritmi valideerimine (ai aitas minu loogika üle vaadata)** 
+* **SearchService' filtreerimisalgoritmi valideerimine** 
 * **AI aitas meelde tuletada sort() ja Integer.compare kirjutamise loogikat** 
 * **Konsulteerisin AI-ga, et luua existsBy päring ReservationRepository-s.** 
 * **Konsulteerisin AI-ga heade & selgete commit-sõnumite loomiseks** 
