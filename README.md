@@ -1,4 +1,4 @@
-# Nutikas restorani reserveerimissüsteem - CGI proovitöö
+# Nutikas restorani reserveerimissüsteem
 
 ## Kasutatud tehnoloogiad
 
