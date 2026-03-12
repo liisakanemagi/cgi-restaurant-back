@@ -15,13 +15,6 @@ public class RestaurantTableController {
 
     private final RestaurantTableService restaurantTableService;
 
-    @GetMapping("/api/restaurant/tables")
-    @Operation(summary = "Laudade pärimine", description = "Tagastab nimekirja laudadest")
-
-    public List<RestaurantTableDto> getRestaurantTables() {
-        return restaurantTableService.getRestaurantTables();
-    }
-
     @PutMapping("api/restaurant/table/{tableId}")
     @Operation(summary = "Laua andmete muutmine")
 

@@ -19,8 +19,7 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("/api/available")
-    @Operation(summary = "Vabade & sobivate laudade pärimine",
-            description = "Tagastab nimekirja laudadest vastavalt vabale kellajale, külaliste arvule ja broneerija eelistustele")
+    @Operation(summary = "Vabade & sobivate laudade pärimine")
 
     public List<RestaurantTableDto> getFilteredRestaurantTables(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime,
