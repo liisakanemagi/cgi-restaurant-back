@@ -33,7 +33,7 @@ public class SearchService {
             RestaurantTableDto restaurantTableDto = restaurantTableMapper.toRestaurantTableDto(restaurantTable);
 
             Boolean isOccupied = (occupiedRestaurantTableIds.contains(restaurantTable.getId()));
-            Boolean hasEnoughSeats = (restaurantTable.getCapacity() >= guestCount);
+            Boolean hasEnoughSeats = (guestCount == null || restaurantTable.getCapacity() >= guestCount);
             Boolean matchesPrivate = (isPrivate == null || restaurantTable.getIsPrivate().equals(isPrivate));
             Boolean matchesAccessible = (isAccessible == null || restaurantTable.getIsAccessible().equals(isAccessible));
             Boolean matchesWindowSeat = (isWindowSeat == null || restaurantTable.getIsWindowSeat().equals(isWindowSeat));
@@ -55,13 +55,14 @@ public class SearchService {
     }
 
 
-private static void sortSuitableRestaurantTables(Integer guestCount, List<RestaurantTableDto> restaurantTableDtos) {
-    restaurantTableDtos.sort((t1, t2) -> {
-        int waste1 = t1.getCapacity() - guestCount;
-        int waste2 = t2.getCapacity() - guestCount;
-        return Integer.compare(waste1, waste2);
-    });
-}
+    private static void sortSuitableRestaurantTables(Integer guestCount, List<RestaurantTableDto> restaurantTableDtos) {
+        if (guestCount != null) {
+            restaurantTableDtos.sort((t1, t2) -> {
+                int waste1 = t1.getCapacity() - guestCount;
+                int waste2 = t2.getCapacity() - guestCount;
+                return Integer.compare(waste1, waste2);
+            });
+        }
+    }
 
 }
-

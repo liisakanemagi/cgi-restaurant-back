@@ -27,6 +27,8 @@ public class MockDataService {
     @EventListener(ApplicationReadyEvent.class)
     public void setUpMockReservations() {
 
+        reservationRepository.deleteAll();
+
         if (reservationRepository.count() > 0) {
             return;
         }
