@@ -3,22 +3,40 @@
 ## Kasutatud tehnoloogiad
 
 * **Backend:** Java 21, Spring Boot 3, Gradle
-* **Andmebaas:** PostgreSQL
+* **Andmebaas:** H2 (in-memory) arenduseks / PostgreSQL valmidus
 * **Dokumentatsioon:** Swagger (OpenAPI)
 * **Frontend:** Vue.js (lisandub hiljem)
 
 ## Käivitamine
 
-* **Andmebaasi ettevalmistus:** Veendu, et sul on töös PostgreSQL server. Loo uus tühi andmebaas (nt nimega restaurant_db).
-* **Konfigureerimine:** Seadista failis src/main/resources/application.properties järgmised andmed:
-* spring.datasource.url=jdbc:postgresql://localhost:5432/restaurant_db
-* spring.datasource.username=SINU_KASUTAJA
-* spring.datasource.password=SINU_PAROOL
-* **Käivitamine:** Liigu projekti juurkausta ja käivita rakendus:
-* ./gradlew bootRun
-* **Andmete genereerimine:** Andmete genereerimine: Esimesel käivitamisel loob rakendus automaatselt tabelid ja genereerib 
-* 14 päeva testandmed
-** *Dokumentatsioon:** API-ga tutvumiseks ja päringute testimiseks ava brauseris Swagger UI: http://localhost:8080/swagger-ui/index.html
+Projekt on seadistatud kasutama mälupõhist H2 andmebaasi
+1.  **Ava terminal** projekti juurkaustas.
+2.  **Käivita rakendus** vastavalt oma operatsioonisüsteemile:
+
+    *   **Windows (PowerShell):**
+        ```sh
+        .\gradlew bootRun
+        ```
+    *   **Windows (Command Prompt / cmd.exe):**
+        ```sh
+        gradlew bootRun
+        ```
+    *   **Linux / macOS:**
+        ```sh
+        ./gradlew bootRun
+        ```
+    *Märkus: Kui `bootRun` käsk ebaõnnestub, proovi esmalt `.\gradlew clean` (või `./gradlew clean`), et puhastada vanad ehitusfailid.*
+
+3.  **Andmebaas:** Rakendus loob käivitamisel automaatselt andmebaasi ja tabelid ning impordib algandmed (`create.sql` ja `import.sql`).
+4.  **Dokumentatsioon:** API-ga tutvumiseks ja päringute testimiseks ava brauseris Swagger UI:
+    * [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+5.  **Andmebaasi konsool:** Andmebaasi sisu vaatamiseks ava H2 konsool:
+    * [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+    * **JDBC URL:** `jdbc:h2:mem:restaurant_db`
+    * **User Name:** `sa`
+    * **Password:** (jäta tühjaks)
+
+*Märkus: Kui soovid kasutada PostgreSQL-i, on vastav seadistus `application.properties` failis kommenteeritud kujul olemas.*
 
 ## Ärireeglid
 
@@ -70,7 +88,8 @@
 ### Päev 4
 
 * **Tegevused:** updateRestaurantTable funktsionaalsuse loomine, et admin saaks tulevikus muuta laua asukohti või muid andmeid,
-* generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Random" funktsionaalsust.
+* generateMockReservations funktsionaalsuse loomine, kus õppisin ja kasutasin "Random" funktsionaalsust (see funktisoon
+* ei kontrolli, kas ta on juba vastavale ajale vastava laua broneerinud)
 * **Ajakulu:** ~ 3 tundi
 
 ### Päev 5
